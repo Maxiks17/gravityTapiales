@@ -1,0 +1,410 @@
+.container {
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.subtitle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.subtitle svg {
+    flex-shrink: 0;
+}
+
+.headerActions {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.buttonText {
+    display: inline;
+}
+
+/* Stats Grid */
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.statCard {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+}
+
+.statIcon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.statContent {
+    flex: 1;
+    min-width: 0;
+}
+
+.statLabel {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--spacing-xs) 0;
+}
+
+.statValue {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+/* Card */
+.cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.cardTitle {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+/* Table */
+.tableContainer {
+    overflow-x: auto;
+    width: 100%;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.table thead {
+    background-color: var(--color-bg-secondary);
+}
+
+.table th {
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-align: left;
+    font-weight: 600;
+    color: var(--color-text-main);
+    border-bottom: 2px solid var(--color-border);
+    font-size: 0.8125rem;
+    white-space: nowrap;
+}
+
+.table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-main);
+    font-size: 0.875rem;
+}
+
+.table tbody tr:hover {
+    background-color: var(--color-bg-hover);
+}
+
+.amount {
+    font-weight: 600;
+    color: var(--color-success);
+    white-space: nowrap;
+}
+
+/* Empty State */
+.emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    color: var(--color-text-secondary);
+    gap: var(--spacing-md);
+}
+
+.emptyState svg {
+    opacity: 0.3;
+}
+
+/* Modal */
+.modalContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.closureSummary {
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.totalAmount {
+    font-size: 1.5rem;
+    color: var(--color-success);
+}
+
+.formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.formGroup label {
+    font-weight: 600;
+    color: var(--color-text-main);
+    font-size: 0.875rem;
+}
+
+.textarea {
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+    font-family: inherit;
+    font-size: 0.875rem;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.modalActions {
+    display: flex;
+    gap: var(--spacing-sm);
+    justify-content: flex-end;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 0;
+        overflow-x: hidden;
+        width: 100%;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.75rem;
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .headerActions {
+        width: 100%;
+    }
+
+    .headerActions button {
+        width: 100%;
+        font-size: 0.8125rem;
+        padding: var(--spacing-sm) var(--spacing-md);
+        justify-content: center;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+        margin-bottom: var(--spacing-md);
+    }
+
+    .statCard {
+        padding: var(--spacing-sm);
+    }
+
+    .statIcon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .statLabel {
+        font-size: 0.6875rem;
+    }
+
+    .statValue {
+        font-size: 1.25rem;
+    }
+
+    .cardHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+        padding: var(--spacing-sm) var(--spacing-md);
+    }
+
+    .cardTitle {
+        font-size: 1rem;
+    }
+
+    .cardHeader button {
+        width: 100%;
+        font-size: 0.8125rem;
+    }
+
+    .tableContainer {
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .table {
+        font-size: 0.75rem;
+        min-width: 100%;
+    }
+
+    .table th {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.6875rem;
+        white-space: nowrap;
+    }
+
+    .table td {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 0.75rem;
+        max-width: 150px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .table td.amount {
+        max-width: none;
+        white-space: nowrap;
+    }
+
+    .emptyState {
+        padding: 2rem 1rem;
+    }
+
+    .emptyState svg {
+        width: 36px;
+        height: 36px;
+    }
+
+    .modalActions {
+        flex-direction: column-reverse;
+    }
+
+    .modalActions button {
+        width: 100%;
+    }
+
+    .closureSummary {
+        padding: var(--spacing-md);
+    }
+
+    .summaryRow {
+        font-size: 0.875rem;
+    }
+
+    .totalAmount {
+        font-size: 1.25rem;
+    }
+
+    .buttonText {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0;
+    }
+
+    .table {
+        font-size: 0.6875rem;
+    }
+
+    .table th {
+        padding: var(--spacing-xs);
+        font-size: 0.625rem;
+    }
+
+    .table td {
+        padding: var(--spacing-xs);
+        font-size: 0.6875rem;
+        max-width: 100px;
+    }
+
+    .statsGrid {
+        gap: var(--spacing-xs);
+    }
+
+    .statValue {
+        font-size: 1.125rem;
+    }
+}

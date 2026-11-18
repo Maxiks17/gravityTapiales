@@ -1,0 +1,1633 @@
+.container {
+    display: flex;
+    height: calc(100vh - 70px);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    margin: calc(var(--spacing-xl) * -1);
+    overflow: hidden;
+}
+
+.mainContent {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    overflow: hidden;
+}
+
+.filtersSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    background-color: var(--color-bg-card);
+    padding: var(--spacing-sm);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+}
+
+.searchBar {
+    position: relative;
+    flex: 1;
+}
+
+.searchIcon {
+    position: absolute;
+    left: var(--spacing-sm);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-secondary);
+}
+
+.searchInput {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-sm) var(--spacing-sm) 2.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.searchInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.categoryFilters {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .categoryFilters {
+        display: none;
+    }
+}
+
+.categoryButton {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.categoryButton:hover {
+    border-color: var(--color-primary);
+    background-color: var(--color-bg-hover);
+}
+
+.categoryButton.active {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.productsGrid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-auto-rows: minmax(200px, auto);
+    gap: 0.5rem;
+    overflow-y: auto;
+    padding: var(--spacing-xs);
+    align-content: start;
+    scrollbar-gutter: stable;
+}
+
+@media (max-width: 1400px) {
+    .productsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+}
+
+@media (max-width: 1100px) {
+    .productsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
+.loadingMessage,
+.emptyMessage {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-text-secondary);
+}
+
+.productCard {
+    background-color: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.productCard:hover {
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.productCard:active {
+    transform: translateY(0);
+}
+
+.productImage {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    background-color: var(--color-bg-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.noImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+}
+
+.productInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.productName {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    line-height: 1.2;
+}
+
+.productPrice {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-success);
+    margin: 0;
+}
+
+.productStock {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+/* Cart Panel */
+.cartPanel {
+    width: 380px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.cartHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+}
+
+.cartTitle {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0;
+    white-space: nowrap;
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.customerIconButton {
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 0.375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.customerIconButton:hover {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+}
+
+.compactCustomerSelect {
+    display: none;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.selectCompact {
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+    font-size: 0.75rem;
+    cursor: pointer;
+    max-width: 120px;
+}
+
+.selectCompact:focus {
+    outline: none;
+    border-color: var(--color-primary);
+}
+
+.closeIconButton {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.closeIconButton:hover {
+    color: var(--color-error);
+}
+
+.cartSummaryCompact {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm);
+}
+
+.summaryColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.checkoutButtonCompact {
+    flex-shrink: 0;
+    width: auto;
+    min-height: 50px;
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.customerSection {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.discreteButton {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    cursor: pointer;
+    transition: color 0.2s;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.discreteButton:hover {
+    color: var(--color-primary);
+}
+
+.customerSelectContainer {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+    width: 100%;
+}
+
+.label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-xs);
+}
+
+.select {
+    flex: 1;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.select option {
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+}
+
+.select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.closeButton {
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s;
+}
+
+.closeButton:hover {
+    background-color: var(--color-bg-secondary);
+    color: var(--color-text-main);
+}
+
+.cartItems {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--spacing-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    min-height: 0;
+    position: relative;
+}
+
+.discountListTag {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 0.5rem 0.75rem;
+    background-color: var(--color-error);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.emptyCart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: 2rem;
+    color: var(--color-text-secondary);
+}
+
+.emptyCart svg {
+    opacity: 0.3;
+}
+
+.cartItem {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm);
+    background-color: var(--color-bg-secondary);
+    border-radius: var(--radius-md);
+}
+
+.cartItemInfo {
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+    min-width: 0;
+}
+
+.cartItemName {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0;
+    line-height: 1.2;
+}
+
+.cartItemPrice {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.cartItemControls {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.cartItemActions {
+    grid-column: 1;
+    grid-row: 2;
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.cartItemTotal {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--color-success);
+    white-space: nowrap;
+    padding-left: 0.25rem;
+}
+
+.quantityControl {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--color-bg-card);
+    border-radius: var(--radius-sm);
+    padding: 0.25rem;
+}
+
+.quantityButton {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: var(--color-primary);
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.quantityButton:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+}
+
+.quantityButton:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.quantity {
+    min-width: 24px;
+    text-align: center;
+    font-weight: 600;
+    color: var(--color-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 24px;
+}
+
+.removeButton {
+    width: 24px;
+    height: 24px;
+    border: none;
+    border-radius: var(--radius-sm);
+    background-color: transparent;
+    color: var(--color-error);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.removeButton:hover {
+    background-color: var(--color-error-light);
+}
+
+.cartFooter {
+    border-top: 2px solid var(--color-border);
+    background-color: var(--color-bg-card);
+    margin-top: auto;
+    flex-shrink: 0;
+    max-height: none;
+    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.cartSummary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.controlCard {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xs);
+}
+
+.totalCard {
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-xs) var(--spacing-sm);
+}
+
+.discountControlSection {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 0;
+    min-width: 0;
+}
+
+.footerControlsRow {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+}
+
+.footerControlsRow>.discountControlSection {
+    flex-shrink: 0;
+}
+
+.inlineCustomerSection {
+    min-width: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.inlineCustomerButton {
+    width: 100%;
+    height: 28px;
+    border: 1px dashed var(--color-border);
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-main);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    padding: 0 var(--spacing-sm);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inlineCustomerButton:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+    background: var(--color-bg-hover);
+}
+
+.inlineCustomerSelectContainer {
+    display: flex;
+    gap: var(--spacing-xs);
+    align-items: center;
+    width: 100%;
+}
+
+.customerModalContent {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.customerModalSection {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.customerModalSearchInput {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    font-size: 0.875rem;
+}
+
+.customerModalSearchInput:focus,
+.customerFormInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.customerModalResults {
+    max-height: 220px;
+    overflow-y: auto;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg-main);
+}
+
+.customerResultItem {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+    background: transparent;
+    text-align: left;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.customerResultItem:last-child {
+    border-bottom: none;
+}
+
+.customerResultItem:hover {
+    background: var(--color-bg-hover);
+}
+
+.customerResultMain {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.customerResultMeta {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    margin-top: 0.125rem;
+}
+
+.customerModalEmpty {
+    padding: var(--spacing-sm);
+    color: var(--color-text-secondary);
+    font-size: 0.8125rem;
+}
+
+.customerModalDivider {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.customerCreateForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.customerCreateTitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin: 0;
+}
+
+.customerFormRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-xs);
+}
+
+.customerFormInput {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    font-size: 0.875rem;
+}
+
+.customerModalActions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+}
+
+.discountControlLabel {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.discountControlRow {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.discountControlInput {
+    width: 80px;
+    height: 28px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-main);
+    color: var(--color-text-main);
+    padding: 0 0.5rem;
+    font-size: 0.8125rem;
+}
+
+.discountControlInput:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.discountControlSuffix {
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+}
+
+.checkoutButtonFull {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.summaryTotal {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.checkoutButton {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .cartPanel {
+        width: 320px;
+    }
+
+    .productsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        height: auto;
+        min-height: calc(100vh - 60px);
+        margin: calc(var(--spacing-md) * -1);
+        padding: var(--spacing-xs);
+        gap: var(--spacing-xs);
+    }
+
+    .mainContent {
+        height: auto;
+        min-height: 45vh;
+        max-height: 45vh;
+    }
+
+    .filtersSection {
+        padding: var(--spacing-xs);
+        gap: var(--spacing-xs);
+    }
+
+    .searchInput {
+        padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) 2rem;
+    }
+
+    .cartPanel {
+        width: 100%;
+        height: auto;
+        min-height: 45vh;
+        max-height: 50vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .productsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: var(--spacing-xs);
+    }
+
+    .productCard {
+        padding: var(--spacing-xs);
+    }
+
+    .cartHeader {
+        padding: var(--spacing-sm);
+    }
+
+    .cartItems {
+        padding: var(--spacing-xs);
+        gap: var(--spacing-xs);
+    }
+
+    .cartSummary {
+        padding: 0;
+        gap: var(--spacing-xs);
+    }
+
+    .cartFooter {
+        padding: var(--spacing-sm);
+    }
+
+    .checkoutButton {
+        width: 100%;
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        margin: calc(var(--spacing-sm) * -1);
+        padding: var(--spacing-xs);
+        gap: var(--spacing-xs);
+        height: calc(100vh - 56px);
+        min-height: auto;
+        max-height: calc(100vh - 56px);
+        overflow: hidden;
+    }
+
+    .mainContent {
+        height: 62vh;
+        min-height: auto;
+        max-height: 62vh;
+    }
+
+    .filtersSection {
+        padding: var(--spacing-xs);
+    }
+
+    .searchInput {
+        font-size: 0.875rem;
+        padding: var(--spacing-xs) var(--spacing-xs) var(--spacing-xs) 2rem;
+    }
+
+    .productsGrid {
+        grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+        grid-auto-rows: minmax(120px, auto);
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .productCard {
+        padding: 0.375rem;
+        min-height: 120px;
+        max-height: 135px;
+        height: 100%;
+    }
+
+    .productImage {
+        height: 50px;
+    }
+
+    .productName {
+        font-size: 0.688rem;
+        line-height: 1.1;
+        -webkit-line-clamp: 2;
+    }
+
+    .productPrice {
+        font-size: 0.813rem;
+    }
+
+    .productStock {
+        font-size: 0.688rem;
+    }
+
+    .customerSection {
+        display: none;
+    }
+
+    .compactCustomerSelect {
+        display: flex;
+    }
+
+    .cartPanel {
+        height: calc(38vh - var(--spacing-xs));
+        min-height: auto;
+        max-height: calc(38vh - var(--spacing-xs));
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cartHeader {
+        padding: 0.25rem var(--spacing-xs);
+        justify-content: center;
+        min-height: 28px;
+        gap: var(--spacing-xs);
+    }
+
+    .cartTitle {
+        font-size: 0.75rem;
+        gap: 0.25rem;
+        flex: 1;
+        justify-content: center;
+    }
+
+    .cartTitle svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .customerIconButton {
+        padding: 0.25rem;
+    }
+
+    .customerIconButton svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .selectCompact {
+        font-size: 0.688rem;
+        padding: 0.125rem 0.375rem;
+        max-width: 100px;
+    }
+
+    .discreteButton {
+        font-size: 0.688rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .select {
+        font-size: 0.75rem;
+        padding: 0.25rem 0.5rem;
+    }
+
+    .cartItems {
+        padding: 0.25rem var(--spacing-xs);
+        gap: 0.25rem;
+        flex: 1;
+        overflow-y: auto;
+        min-height: 0;
+        max-height: none;
+    }
+
+    .discountListTag {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 0.375rem 0.5rem;
+        font-size: 0.625rem;
+    }
+
+    .cartItem {
+        padding: 0.25rem;
+        gap: 0.125rem;
+        grid-template-columns: minmax(0, 1fr) 80px 70px;
+        grid-template-rows: auto;
+        align-items: center;
+    }
+
+    .cartItemInfo {
+        grid-column: 1;
+        grid-row: 1;
+        gap: 0;
+        overflow: hidden;
+    }
+
+    .cartItemName {
+        font-size: 0.688rem;
+        margin: 0;
+        line-height: 1.1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .cartItemPrice {
+        font-size: 0.625rem;
+    }
+
+    .cartItemControls {
+        grid-column: 2;
+        grid-row: 1;
+        gap: 0.125rem;
+        transform: scale(0.9);
+        justify-content: center;
+    }
+
+    .discountControlInput {
+        width: 60px;
+        height: 22px;
+        padding: 0 0.25rem;
+        font-size: 0.688rem;
+    }
+
+    .cartItemTotal {
+        grid-column: 3;
+        grid-row: 1;
+        font-size: clamp(0.625rem, 2vw, 0.75rem);
+        overflow: visible;
+        text-overflow: clip;
+    }
+
+    .quantityControl {
+        padding: 0.125rem;
+        gap: 0.25rem;
+    }
+
+    .quantityButton {
+        width: 20px;
+        height: 20px;
+    }
+
+    .quantityButton svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .quantity {
+        min-width: 20px;
+        height: 20px;
+        font-size: 0.75rem;
+    }
+
+    .removeButton {
+        width: 20px;
+        height: 20px;
+    }
+
+    .removeButton svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .cartFooter {
+        padding: var(--spacing-xs);
+        gap: 4px;
+    }
+
+    .cartSummary {
+        padding: 0;
+        gap: 0;
+        margin-bottom: 4px;
+    }
+
+    .controlCard {
+        padding: 4px;
+    }
+
+    .totalCard {
+        padding: 4px 6px;
+    }
+
+    .footerControlsRow {
+        gap: 4px;
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .inlineCustomerButton {
+        height: 22px;
+        font-size: 0.625rem;
+    }
+
+    .inlineCustomerSection .select {
+        padding: 2px 4px;
+        font-size: 0.688rem;
+    }
+
+    .customerFormRow {
+        grid-template-columns: 1fr;
+    }
+
+    .customerModalActions {
+        flex-direction: column;
+    }
+
+    .summaryRow {
+        font-size: 0.688rem;
+        line-height: 1.2;
+    }
+
+    .summaryTotal {
+        font-size: 0.875rem;
+        font-weight: 700;
+    }
+
+    .checkoutButton,
+    .checkoutButtonFull {
+        width: 100%;
+        padding: 6px 8px;
+        font-size: 0.813rem;
+    }
+
+    .actionButtons {
+        gap: 4px !important;
+    }
+
+    .actionButtonsRow {
+        gap: 4px !important;
+    }
+}
+
+/* Action Buttons */
+.actionButtons {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-direction: column;
+}
+
+.actionButtonsRow {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+/* Payment Mode Styles */
+.paymentModeContainer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-xl);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.paymentHeader {
+    text-align: center;
+}
+
+.paymentTitle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-sm);
+}
+
+.paymentSubtitle {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+}
+
+.paymentMethodsGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-lg);
+    margin: var(--spacing-xl) 0;
+}
+
+.paymentMethodCard {
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.paymentMethodCard:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.paymentMethodCard.selected {
+    border-color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.05);
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.paymentMethodIcon {
+    font-size: 3rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.paymentMethodName {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    text-align: center;
+}
+
+.paymentMethodDesc {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+}
+
+.paymentBadge {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    margin-top: var(--spacing-xs);
+}
+
+.badgeAuto {
+    background: rgba(34, 197, 94, 0.1);
+    color: rgb(34, 197, 94);
+}
+
+.badgeManual {
+    background: rgba(245, 158, 11, 0.1);
+    color: rgb(245, 158, 11);
+}
+
+.paymentActions {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+    margin-top: var(--spacing-xl);
+}
+
+.paymentActions button {
+    min-width: 150px;
+}
+
+/* Payment Method Selector in Cart */
+.paymentMethodSection {
+    padding: var(--spacing-sm);
+}
+
+.paymentMethodLabel {
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+    margin-bottom: var(--spacing-xs);
+}
+
+.paymentMethodList {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.paymentMethodOption {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background: var(--color-bg-card);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.paymentMethodOption:hover {
+    border-color: var(--color-primary);
+    background: var(--color-bg-hover);
+}
+
+.paymentMethodOption.selected {
+    border-color: var(--color-primary);
+    background: rgba(59, 130, 246, 0.08);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.paymentMethodRadio {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+    flex-shrink: 0;
+}
+
+.paymentMethodIcon {
+    font-size: 1.25rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.paymentMethodDetails {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex: 1;
+}
+
+.paymentMethodName {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+.autoInvoiceBadge {
+    font-size: 0.6875rem;
+    padding: 2px 6px;
+    border-radius: var(--radius-full);
+    background: rgba(34, 197, 94, 0.1);
+    color: rgb(34, 197, 94);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Mixed Payments Styles */
+.paymentSummary {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    margin-left: var(--spacing-xs);
+}
+
+.paymentAllocationsList {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+}
+
+.paymentAllocationItem {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: 4px var(--spacing-xs);
+    background: var(--color-bg-secondary);
+    border-radius: var(--radius-sm);
+}
+
+.paymentAmount {
+    margin-left: auto;
+    font-weight: 600;
+    color: var(--color-primary);
+    font-size: 0.875rem;
+}
+
+.removePaymentBtn {
+    padding: var(--spacing-xs);
+    background: transparent;
+    border: none;
+    color: var(--color-error);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.removePaymentBtn:hover {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.remainingAmount {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(245, 158, 11, 0.1);
+    border: 1px solid rgba(245, 158, 11, 0.3);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: rgb(180, 120, 10);
+}
+
+.remainingAmount strong {
+    font-weight: 700;
+}
+
+.paymentCompleteIndicator {
+    text-align: center;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    color: rgb(34, 197, 94);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.875rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.customAmountSection {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-xs);
+}
+
+.customAmountInput {
+    flex: 1;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background-color: var(--color-bg-card);
+    color: var(--color-text-main);
+    font-size: 0.875rem;
+}
+
+.customAmountInput:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.customAmountHint {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    min-width: 60px;
+    text-align: right;
+}
+
+.paymentMethodGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 4px;
+}
+
+.paymentMethodButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    padding: 6px 4px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.15s;
+    font-size: 0.625rem;
+    font-weight: 500;
+    color: var(--color-text-main);
+}
+
+.paymentMethodButton:hover:not(:disabled) {
+    border-color: var(--color-primary);
+    background: var(--color-bg-hover);
+}
+
+.paymentMethodButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.paymentMethodButton .paymentMethodIcon {
+    font-size: 1.125rem;
+}
+
+.paymentMethodButton.expandButton {
+    background: var(--color-bg-secondary);
+    border-style: dashed;
+}
+
+/* Mobile adjustments for mixed payments */
+@media (max-width: 480px) {
+    .paymentMethodSection {
+        padding: var(--spacing-xs);
+        margin-top: var(--spacing-xs);
+    }
+
+    .paymentMethodLabel {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+
+    .paymentAllocationsList {
+        padding: 4px;
+        gap: 3px;
+        margin-bottom: 4px;
+    }
+
+    .paymentAllocationItem {
+        padding: 3px 6px;
+        gap: 4px;
+    }
+
+    .paymentAmount {
+        font-size: 0.75rem;
+    }
+
+    .remainingAmount {
+        padding: 4px 6px;
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+
+    .paymentCompleteIndicator {
+        padding: 4px 6px;
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+    }
+
+    .paymentMethodGrid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 3px;
+    }
+
+    .paymentMethodButton {
+        padding: 4px 2px;
+        font-size: 0.5625rem;
+        gap: 0;
+    }
+
+    .paymentMethodButton .paymentMethodIcon {
+        font-size: 1rem;
+    }
+
+    .customAmountSection {
+        gap: 4px;
+        margin-bottom: 4px;
+    }
+
+    .customAmountInput {
+        padding: 4px 6px;
+        font-size: 0.75rem;
+    }
+
+    .customAmountHint {
+        font-size: 0.688rem;
+        min-width: 50px;
+    }
+}

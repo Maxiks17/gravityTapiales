@@ -1,0 +1,39 @@
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main {
+    flex: 1;
+    margin-left: 250px;
+    background-color: var(--color-bg-body);
+    transition: margin-left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.main.sidebarClosed {
+    margin-left: 0;
+}
+
+.content {
+    flex: 1;
+    padding: var(--spacing-xl);
+}
+
+
+@media (max-width: 768px) {
+    .main {
+        margin-left: 0;
+    }
+
+    .content {
+        padding: var(--spacing-md);
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        padding: var(--spacing-sm);
+    }
+}

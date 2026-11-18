@@ -1,0 +1,47 @@
+.tenantSelector {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+}
+
+.select {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    min-width: 200px;
+    transition: border-color 0.2s;
+}
+
+.select:hover {
+    border-color: var(--primary-color);
+}
+
+.select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+}
+
+.select option {
+    padding: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .select {
+        min-width: 150px;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .select {
+        min-width: 120px;
+        font-size: 0.8rem;
+        padding: 0.3rem 0.6rem;
+    }
+}

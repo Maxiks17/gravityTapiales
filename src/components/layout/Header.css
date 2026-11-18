@@ -1,0 +1,304 @@
+.header {
+    height: 70px;
+    min-height: 70px;
+    max-height: 70px;
+    background: var(--color-bg-card);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+}
+
+.header-content {
+    height: 100%;
+    padding: 0 var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.sidebar-toggle-btn {
+    margin-right: 0;
+    flex-shrink: 0;
+}
+
+/* Tenant / user email shown near header title */
+.header-user-name {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+}
+
+.header-user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-main);
+}
+
+.sidebar-toggle {
+    margin-right: var(--spacing-sm);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    cursor: pointer;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease;
+}
+
+.sidebar-toggle:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+}
+
+.header-action-btn {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+}
+
+.theme-toggle {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: transparent;
+    border: 1px solid var(--color-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.header-action-btn:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-primary);
+}
+
+.header-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: var(--color-error);
+    color: white;
+    font-size: 0.625rem;
+    font-weight: 700;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-user {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-xs) var(--spacing-md);
+    position: relative; /* ensure dropdown positions relative to this container */
+    border-radius: var(--radius-md);
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.header-user:hover {
+    background: var(--color-bg-hover);
+}
+
+.header-user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+/* Dropdown menu shown when clicking the avatar */
+.header-user-menu {
+    position: absolute;
+    right: 0;
+    left: auto;
+    top: calc(100% + 8px);
+    width: auto;
+    min-width: 200px;
+    max-width: calc(100vw - 32px); /* prevent overflow on small screens */
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-md);
+    border-radius: 8px;
+    padding: 0.5rem;
+    z-index: 200;
+}
+
+.header-user-menu-info {
+    padding: 0.5rem 0.5rem 0.25rem 0.5rem;
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+}
+
+.header-user-menu .header-user-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.header-user-menu .header-user-role {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.header-user-menu-actions {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.menu-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-main);
+    border-radius: 6px;
+    transition: background 0.12s ease;
+}
+
+.menu-btn:hover {
+    background: var(--color-bg-hover);
+}
+
+.header-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.header-user-name {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+}
+
+.header-user-role {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+/* Responsive styles for mobile */
+@media (max-width: 768px) {
+    .header {
+        height: 60px;
+        min-height: 60px;
+        max-height: 60px;
+    }
+
+    .header-content {
+        padding: 0 var(--spacing-md);
+    }
+
+    .header-left {
+        gap: var(--spacing-sm);
+        flex: 1;
+        min-width: 0;
+    }
+
+    .header-title {
+        font-size: 1.125rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .sidebar-toggle-btn {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .header-actions {
+        gap: var(--spacing-sm);
+        flex-shrink: 0;
+    }
+
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        display: flex !important;
+    }
+
+    .header-action-btn {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        height: 56px;
+        min-height: 56px;
+        max-height: 56px;
+    }
+
+    .header-content {
+        padding: 0 var(--spacing-sm);
+    }
+
+    .header-title {
+        font-size: 1rem;
+    }
+
+    .sidebar-toggle-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .theme-toggle {
+        width: 36px;
+        height: 36px;
+        display: flex !important;
+    }
+
+    .header-action-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
