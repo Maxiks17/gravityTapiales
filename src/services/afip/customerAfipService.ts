@@ -38,11 +38,11 @@ import type {
 
 // ─── Encryption Key ──────────────────────────────────────────────────────────────
 
-const ENCRYPTION_KEY = import.meta.env.VITE_ENCRYPTION_KEY || '';
+const ENCRYPTION_KEY = import.meta.env.ENCRYPTION_KEY || '';
 
 function getEncryptionService(): EncryptionService {
   if (!ENCRYPTION_KEY) {
-    throw new Error('VITE_ENCRYPTION_KEY not configured');
+    throw new Error('ENCRYPTION_KEY not configured');
   }
   return new EncryptionService(ENCRYPTION_KEY);
 }

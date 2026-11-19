@@ -33,7 +33,7 @@ echo ""
 echo "Setting ENCRYPTION_KEY secret..."
 
 # Read ENCRYPTION_KEY from .env if not already set
-ENCRYPTION_KEY="${ENCRYPTION_KEY:-$(grep '^VITE_ENCRYPTION_KEY=' .env 2>/dev/null | cut -d= -f2-)}"
+ENCRYPTION_KEY="${ENCRYPTION_KEY:-$(grep '^ENCRYPTION_KEY=' .env 2>/dev/null | cut -d= -f2-)}"
 if [ -z "$ENCRYPTION_KEY" ]; then
     echo "Warning: ENCRYPTION_KEY not found in .env — skipping secret setup."
 else

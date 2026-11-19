@@ -46,7 +46,7 @@ const Settings: React.FC = () => {
     });
     const [certificateFile, setCertificateFile] = useState<File | null>(null);
     const [privateKeyFile, setPrivateKeyFile] = useState<File | null>(null);
-    const encryptionService = new EncryptionService(import.meta.env.VITE_ENCRYPTION_KEY);
+    const encryptionService = new EncryptionService(import.meta.env.ENCRYPTION_KEY);
 
     useEffect(() => {
         loadSettings();
