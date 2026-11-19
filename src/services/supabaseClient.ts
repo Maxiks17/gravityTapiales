@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = import.meta.env.SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.SUPABASE_ANON_KEY;
 
 const TRANSIENT_NETWORK_ERROR_PATTERNS = [
     'failed to fetch',
@@ -41,7 +41,7 @@ async function fetchWithRetry(input: RequestInfo | URL, init?: RequestInit): Pro
 }
 
 if (!supabaseUrl || !supabaseAnonKey) {
-    console.error('Missing Supabase URL or Anon Key. Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your .env file.');
+    console.error('Missing Supabase URL or Anon Key. Please set SUPABASE_URL and SUPABASE_ANON_KEY in your .env file.');
 }
 
 export const supabase = createClient(

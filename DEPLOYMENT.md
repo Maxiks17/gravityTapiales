@@ -57,8 +57,8 @@ Already configured! The `vercel.json` file handles routing automatically.
 
 4. **Variables de entorno** (IMPORTANTE):
    En el dashboard de Vercel, agrega estas variables de entorno:
-   - `VITE_SUPABASE_URL`
-   - `VITE_SUPABASE_ANON_KEY`
+   - `SUPABASE_URL`
+   - `SUPABASE_ANON_KEY`
    - `VITE_AFIP_API_URL` (si usas AFIP)
 
 **Características incluidas en vercel.json:**

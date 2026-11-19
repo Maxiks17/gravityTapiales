@@ -7,9 +7,9 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
 if (!supabaseUrl || !supabaseServiceKey) {
-  console.error('Error: Se requieren las variables de entorno VITE_SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY.');
+  console.error('Error: Se requieren las variables de entorno SUPABASE_URL y SUPABASE_SERVICE_ROLE_KEY.');
   console.error('Ejemplo de uso:');
-  console.error('VITE_SUPABASE_URL="https://tu-proyecto.supabase.co" SUPABASE_SERVICE_ROLE_KEY="tu-service-role-key" node scripts/export-auth-users.js');
+  console.error('SUPABASE_URL="https://tu-proyecto.supabase.co" SUPABASE_SERVICE_ROLE_KEY="tu-service-role-key" node scripts/export-auth-users.js');
   process.exit(1);
 }
 

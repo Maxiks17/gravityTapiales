@@ -47,8 +47,8 @@ vercel --prod
    En "Environment Variables", agrega:
 
    ```
-   VITE_SUPABASE_URL = tu_supabase_url_aquí
-   VITE_SUPABASE_ANON_KEY = tu_supabase_anon_key_aquí
+   SUPABASE_URL = tu_supabase_url_aquí
+   SUPABASE_ANON_KEY = tu_supabase_anon_key_aquí
    VITE_AFIP_API_URL = tu_afip_api_url_aquí (opcional)
    ```
 
